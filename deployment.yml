@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deploy
+  labels:
+    app: node-svr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-svr
+  template:
+    metadata:
+      labels:
+        app: node-svr
+    spec: 
+      containers:
+      - name: app-ctr
+        image: devavaish/kubernetes:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
